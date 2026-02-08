@@ -1,0 +1,247 @@
+/* ============================================
+   ÉLANORA FASHION - DESIGN SYSTEM TOKENS
+   8-Point Grid System - All spacing in multiples of 8px
+   ============================================ */
+
+:root {
+  /* ========== COLOR TOKENS ========== */
+  --color-50: #F4F4F0;
+  --color-100: #E0E1D6;
+  --color-200: #CCCEBB;
+  --color-300: #B7BAA0;
+  --color-400: #A3A786;
+  --color-500: #8F946B;
+  --color-600: #737756;
+  --color-700: #5C5F45;
+  --color-800: #424431;
+  --color-900: #28291E;
+  --color-950: #0E0F0B;
+
+  /* Legacy color names for compatibility */
+  --color-primary-teal: #8F946B;
+  --color-primary-teal-dark: #737756;
+  --color-background-white: #F4F4F0;
+  --color-text-primary: #0E0F0B;
+  --color-text-secondary: #5C5F45;
+  --color-accent-yellow: #B7BAA0;
+  --color-accent-red: #A3A786;
+  --color-accent-blue: #CCCEBB;
+  --color-border-light: #E0E1D6;
+  --color-footer-background: #28291E;
+  --color-overlay-shadow: rgba(15, 15, 10, 0.12);
+
+  /* ========== TYPOGRAPHY TOKENS ========== */
+  /* Font Families */
+  --font-logo: 'Playfair Display', serif;
+  --font-display-serif: 'Poppins', sans-serif;
+  --font-sans-primary: 'Roboto', sans-serif;
+
+  /* Typography Scale */
+  --type-display-xl: 120px;
+  --type-display-l: 64px;
+  --type-heading-1: 44px;
+  --type-heading-2: 32px;
+  --type-heading-3: 24px;
+  --type-body-l: 18px;
+  --type-body-m: 16px;
+  --type-body-s: 14px;
+  --type-caption: 12px;
+  --type-navigation: 15px;
+
+  /* Font Weights */
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* Line Heights */
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Letter Spacing */
+  --letter-spacing-navigation: 0.08em;
+  --letter-spacing-tight: -0.02em;
+
+  /* ========== SPACING TOKENS (8-Point Grid) ========== */
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-28: 28px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+  --space-96: 96px;
+  --space-120: 120px;
+  --space-160: 160px;
+
+  /* ========== BORDER RADIUS TOKENS ========== */
+  --radius-small: 8px;
+  --radius-medium: 16px;
+  --radius-large: 24px;
+  --radius-pill: 999px;
+
+  /* ========== ELEVATION TOKENS (Shadows) ========== */
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-hover: 0 16px 32px rgba(0, 0, 0, 0.16);
+
+  /* ========== ANIMATION TOKENS ========== */
+  --animation-fast: 150ms ease-out;
+  --animation-normal: 250ms ease;
+  --animation-slow: 400ms ease;
+  
+  /* Transform Tokens */
+  --hover-scale: 1.03;
+  --fade-in-up-start: translateY(16px);
+  --fade-in-up-end: translateY(0);
+
+  /* ========== LAYOUT TOKENS ========== */
+  --container-width: 1200px;
+  --header-padding-x: 64px;
+  --header-padding-y: 24px;
+  --icon-button-size: 40px;
+  --wishlist-icon-size: 36px;
+  --timer-digit-size: 44px;
+  --decorative-square-size: 12px;
+  --globe-size: 80px;
+}
+
+/* ========== GLOBAL RESET & BASE STYLES ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans-primary);
+  color: var(--color-text-primary);
+  background-color: var(--color-background-white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== TYPOGRAPHY UTILITY CLASSES ========== */
+.display-xl {
+  font-family: var(--font-display-serif);
+  font-size: var(--type-display-xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.display-l {
+  font-family: var(--font-display-serif);
+  font-size: var(--type-display-l);
+  font-weight: var(--weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.heading-1 {
+  font-family: var(--font-display-serif);
+  font-size: var(--type-heading-1);
+  font-weight: var(--weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+.heading-2 {
+  font-family: var(--font-display-serif);
+  font-size: var(--type-heading-2);
+  font-weight: var(--weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+.heading-3 {
+  font-family: var(--font-display-serif);
+  font-size: var(--type-heading-3);
+  font-weight: var(--weight-medium);
+  line-height: var(--line-height-normal);
+}
+
+.body-l {
+  font-family: var(--font-sans-primary);
+  font-size: var(--type-body-l);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.body-m {
+  font-family: var(--font-sans-primary);
+  font-size: var(--type-body-m);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.body-s {
+  font-family: var(--font-sans-primary);
+  font-size: var(--type-body-s);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height-normal);
+}
+
+.caption {
+  font-family: var(--font-sans-primary);
+  font-size: var(--type-caption);
+  font-weight: var(--weight-light);
+  line-height: var(--line-height-normal);
+}
+
+.navigation {
+  font-family: var(--font-sans-primary);
+  font-size: var(--type-navigation);
+  font-weight: var(--weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-navigation);
+}
+
+/* ========== CONTAINER UTILITY ========== */
+.container {
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-32);
+  padding-right: var(--space-32);
+}
+
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+@media (max-width: 1440px) {
+  :root {
+    --container-width: 1024px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :root {
+    --container-width: 100%;
+    --header-padding-x: 32px;
+    --type-display-xl: 80px;
+    --type-display-l: 48px;
+    --type-heading-1: 36px;
+    --type-heading-2: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-padding-x: 24px;
+    --type-display-xl: 56px;
+    --type-display-l: 40px;
+    --type-heading-1: 32px;
+    --type-heading-2: 24px;
+    --type-heading-3: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --header-padding-x: 16px;
+    --type-display-xl: 48px;
+    --type-display-l: 32px;
+    --type-heading-1: 28px;
+  }
+}
