@@ -148,6 +148,20 @@ function Header() {
         <Link to="/collection" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Collection</Link>
         <Link to="/about" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
         <Link to="/contact" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+        {user ? (
+          <button 
+            className="nav-link" 
+            style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', width: '100%' }}
+            onClick={() => {
+              signOut();
+              setIsMobileMenuOpen(false);
+            }}
+          >
+            Sign Out ({user.user_metadata?.full_name || user.email?.split('@')[0]})
+          </button>
+        ) : (
+          <Link to="/signin" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Sign In</Link>
+        )}
       </nav>
     </div>
     
