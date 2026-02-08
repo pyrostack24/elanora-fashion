@@ -66,6 +66,7 @@ function Header() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
     <>
@@ -126,9 +127,30 @@ function Header() {
               <span className="signin-text">Sign In</span>
             </button>
           )}
+          <button 
+            className={`mobile-menu-toggle ${isMobileMenuOpen ? 'active' : ''}`}
+            aria-label="Menu"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
       </div>
     </header>
+    
+    {/* Mobile Menu */}
+    <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
+      <nav className="mobile-nav">
+        <Link to="/" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+        <Link to="/shop" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Shop</Link>
+        <Link to="/collection" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Collection</Link>
+        <Link to="/about" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+        <Link to="/contact" className="nav-link" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
+      </nav>
+    </div>
+    
     {isSearchOpen && <SearchModal onClose={() => setIsSearchOpen(false)} navigate={navigate} />}
     </>
   );

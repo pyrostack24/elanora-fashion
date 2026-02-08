@@ -1015,82 +1015,387 @@
 }
 
 /* ========== RESPONSIVE STYLES ========== */
-@media (max-width: 1024px) {
-  .header-nav {
-    gap: var(--space-32);
-  }
 
-  .hero-content {
-    padding: 0 var(--space-48);
-  }
+/* Mobile Menu */
+.mobile-menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
 
-  .hero-title-line {
-    font-size: 80px;
-  }
+.mobile-menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--color-text-primary);
+  transition: all 0.3s ease;
+}
 
-  .about-content,
-  .trends-layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-32);
-  }
+.mobile-menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(8px);
+}
 
+.mobile-menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-8px);
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  background: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 99;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+
+.mobile-menu.active {
+  display: block;
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-24);
+}
+
+.mobile-nav .nav-link {
+  padding: var(--space-16) 0;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.mobile-nav .nav-link::after {
+  display: none;
+}
+
+@media (max-width: 1200px) {
   .products-grid-new {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
-
-  .last-chance-card {
-    grid-template-columns: 1fr;
+  
+  .trends-layout {
+    grid-template-columns: 1fr 1fr;
   }
-
-  .last-chance-image {
-    height: 400px;
-    margin-right: 0;
-  }
-
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: var(--space-64);
+  
+  .trends-categories {
+    grid-column: 1 / -1;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .header-nav {
+    display: none;
+  }
+  
+  .mobile-menu-toggle {
+    display: flex;
+  }
+  
+  .header-actions {
+    gap: var(--space-8);
+  }
+  
+  .signin-text {
     display: none;
   }
 
   .hero-content {
-    padding: 0 var(--space-32);
+    padding: 0 var(--space-48);
+    min-height: 80vh;
   }
 
   .hero-title-line {
-    font-size: 56px;
+    font-size: 72px;
+  }
+  
+  .hero-description {
+    font-size: var(--type-body-m);
+  }
+
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-text {
+    padding-top: 0;
+  }
+  
+  .about-image {
+    height: 400px;
+  }
+  
+  .trends-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .trends-image {
+    height: 400px;
   }
 
   .products-grid-new {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-24);
+  }
+  
+  .product-image-container {
+    height: 300px;
   }
 
+  .last-chance-card {
+    grid-template-columns: 1fr;
+    padding: var(--space-48);
+  }
+
+  .last-chance-image {
+    height: 350px;
+    margin-right: 0;
+    transform: none;
+  }
+  
   .countdown-timer {
     position: static;
-    margin-top: var(--space-32);
+    margin-top: var(--space-24);
+    justify-content: center;
+  }
+
+  .footer-middle {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-48);
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 768px) {
+  .header {
+    padding: var(--space-16) var(--space-24);
+  }
+  
+  .header-brand {
+    font-size: var(--type-heading-3);
+  }
+  
+  .icon-button {
+    width: 36px;
+    height: 36px;
+  }
+
   .hero-content {
-    padding: 0 var(--space-24);
+    padding: 0 var(--space-32);
+    min-height: 70vh;
   }
 
   .hero-title-line {
     font-size: 48px;
+  }
+  
+  .hero-description {
+    font-size: var(--type-body-s);
+  }
+  
+  .hero-scroll-indicator {
+    display: none;
+  }
+
+  .about-fashion,
+  .latest-trends,
+  .hot-products,
+  .last-chance {
+    padding: var(--space-64) 0;
+  }
+  
+  .about-image {
+    height: 300px;
+  }
+  
+  .about-text {
+    gap: var(--space-16);
+  }
+  
+  .trends-image {
+    height: 300px;
+  }
+  
+  .products-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-24);
+  }
+
+  .products-grid-new {
+    grid-template-columns: 1fr;
+    gap: var(--space-24);
+  }
+  
+  .product-image-container {
+    height: 400px;
   }
 
   .promo-banner {
     height: 400px;
   }
-
+  
   .promo-heading {
     font-size: 48px;
+  }
+
+  .last-chance-card {
+    padding: var(--space-32);
+  }
+  
+  .last-chance-image {
+    height: 300px;
+  }
+  
+  .countdown-timer {
+    flex-wrap: wrap;
+    gap: var(--space-12);
+  }
+  
+  .digit-value {
+    width: 48px;
+    height: 48px;
+    font-size: var(--type-heading-4);
+  }
+
+  .footer {
+    padding: var(--space-64) 0 var(--space-32) 0;
+  }
+  
+  .footer-container {
+    padding: 0 var(--space-32);
+  }
+  
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: var(--space-48);
+  }
+
+  .footer-middle {
+    grid-template-columns: 1fr;
+    gap: var(--space-32);
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: var(--space-24);
+    text-align: center;
+  }
+
+  .footer-bottom-right {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .newsletter-form {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: var(--space-12) var(--space-16);
+  }
+  
+  .header-brand {
+    font-size: var(--type-body-l);
+  }
+  
+  .icon-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero-content {
+    padding: 0 var(--space-24);
+  }
+
+  .hero-title-line {
+    font-size: 36px;
+  }
+  
+  .hero-brand-small,
+  .hero-season {
+    font-size: var(--type-caption);
+  }
+
+  .about-fashion,
+  .latest-trends,
+  .hot-products,
+  .last-chance {
+    padding: var(--space-48) 0;
+  }
+  
+  .container {
+    padding: 0 var(--space-24);
+  }
+  
+  .about-image,
+  .trends-image {
+    height: 250px;
+  }
+  
+  .product-image-container {
+    height: 350px;
+  }
+
+  .promo-banner {
+    height: 350px;
+  }
+  
+  .promo-heading {
+    font-size: 36px;
+  }
+  
+  .promo-content-wrapper {
+    padding: 0 var(--space-24);
+  }
+
+  .last-chance-card {
+    padding: var(--space-24);
+  }
+  
+  .last-chance-image {
+    height: 250px;
+  }
+
+  .footer-container {
+    padding: 0 var(--space-24);
+  }
+  
+  .footer-social {
+    gap: var(--space-12);
+  }
+  
+  .social-link {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-title-line {
+    font-size: 32px;
+  }
+  
+  .promo-heading {
+    font-size: 32px;
+  }
+  
+  .product-image-container {
+    height: 300px;
   }
 }
 
