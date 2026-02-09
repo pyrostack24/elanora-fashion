@@ -6,6 +6,8 @@ import { WishlistProvider } from './context/WishlistContext.jsx'
 import { ProductsProvider } from './context/ProductsContext.jsx'
 import App from './App.jsx'
 
+import { Analytics } from "@vercel/analytics/react"
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
@@ -13,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <CartProvider>
           <WishlistProvider>
             <App />
+            <Analytics />
           </WishlistProvider>
         </CartProvider>
       </ProductsProvider>
