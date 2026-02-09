@@ -8,23 +8,28 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Check for hash parameters from OAuth redirect
-    const initializeAuth = async () => {
-      // 1. Get current session
-      const { data: { session } } = await supabase.auth.getSession();
-      setUser(session?.user ?? null);
-      setLoading(false);
-    };
+    let mounted = true;
 
-    initializeAuth();
-
-    // 2. Listen for auth changes
+    // 1. Listen for auth changes (handles OAuth redirects and session recovery)
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
-      setLoading(false);
+      if (mounted) {
+        setUser(session?.user ?? null);
+        setLoading(false);
+      }
+    });
+
+    // 2. Check initial session (fallback in case listener doesn't fire immediately)
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (mounted && session) {
+        setUser(session.user);
+      }
+      if (mounted) {
+        setLoading(false);
+      }
     });
 
     return () => {
+      mounted = false;
       subscription.unsubscribe();
     };
   }, []);
